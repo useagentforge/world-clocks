@@ -31,8 +31,8 @@ export function ClockCard({ config, now }: ClockCardProps) {
         </span>
       </div>
 
-      {/* Analog clock face */}
-      <ClockTime hours={hours} minutes={minutes} seconds={seconds} />
+      {/* Analog clock face — parse strings to numbers for SVG hand angles */}
+      <ClockTime hours={parseInt(hours, 10)} minutes={parseInt(minutes, 10)} seconds={parseInt(seconds, 10)} />
 
       {/* Digital time — smaller, sits under the analog face */}
       <p
