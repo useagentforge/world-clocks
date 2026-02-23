@@ -31,11 +31,20 @@ export function ClockCard({ config, now }: ClockCardProps) {
         </span>
       </div>
 
-      {/* Time display */}
+      {/* Analog clock face */}
       <ClockTime hours={hours} minutes={minutes} seconds={seconds} />
 
+      {/* Digital time — smaller, sits under the analog face */}
+      <p
+        className="text-center text-sm font-mono font-medium tabular-nums text-white/60"
+        suppressHydrationWarning
+      >
+        {String(hours).padStart(2, "0")}:{String(minutes).padStart(2, "0")}:
+        <span className="text-white/40">{String(seconds).padStart(2, "0")}</span>
+      </p>
+
       {/* Date */}
-      <p className="text-sm text-white/40" suppressHydrationWarning>
+      <p className="text-center text-xs text-white/40" suppressHydrationWarning>
         {date}
       </p>
     </div>
