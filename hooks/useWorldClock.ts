@@ -1,0 +1,14 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
+export function useWorldClock(intervalMs = 1000): Date {
+  const [now, setNow] = useState<Date>(() => new Date());
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), intervalMs);
+    return () => clearInterval(id);
+  }, [intervalMs]);
+
+  return now;
+}
